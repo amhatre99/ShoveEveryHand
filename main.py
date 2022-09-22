@@ -33,27 +33,11 @@ def shove_simulator(strategy, starting_stack, trials):
 
     return hero_wins / trials
 
+
 if __name__ == '__main__':
+    hero_starting_stack = 200
+    strat_1 = set(Range("33+, K7o+, K6s+, A2o+, A2s+, Q8o+, Q8s+").combos)
+    strat_2 = set(Range("AJs, AQs, AKo, AKs, 77, 88, 99, TT, JJ, QQ, KK, AA").combos)
 
-    ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
-    strategies = []
-    aces = ['A' + ranks[i] for i in range(12)]
-    kings = ['K' + ranks[i] for i in range(4, 11)]
-    queens = ['Q' + ranks[i] for i in range(6, 10)]
-    jacks = ['J' + ranks[i] for i in range(7, 9)]
-    pockets = [ranks[rank] + ranks[rank] + '+' for rank in range(1, 13)]
-
-    starting_stack = 200
-    strategy = set(Range('33+, K7o+, K6s+, A2o+, A2s+, Q8o+, Q8s+').combos)
-    strategy2 = set(Range(" ".join(['ATs', 'AJs', 'AQo', 'AQs', 'AKo', 'AKs', '77', '88', '99', 'TT', 'JJ', 'QQ', 'KK', 'AA'])).combos)
-    trials = 100000
-
-    print(len(strategy2))
-    print(shove_simulator(strategy2, starting_stack, trials))
-
-    #print(holdem_calc.calculate(None, True, 1, None, ["8s", "7s", "Qc", "Th"], False))
-    # hand1 = [Card.new('Ah'), Card.new('As')]
-    # hand2 = [Card.new('Ac'), Card.new('Ks')]
-    # eval = treys.Evaluator()
-    # print(eval.evaluate(hand1, hand2))
-
+    print(len(strat_2))
+    print(shove_simulator(strat_2, hero_starting_stack, trials=100000))
